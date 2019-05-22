@@ -9,5 +9,6 @@
 <body>
     <h1>Sebuah Web</h1>
     <h2>Silahkan menikmati</h2>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis ratione tempore quisquam, reprehenderit dolor quis illum, quaerat totam alias vitae, veritatis sapiente mollitia. Dolorem vitae sapiente tempora, ullam eius culpa.</p>
 </body>
 </html>
