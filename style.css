@@ -46,3 +46,21 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
+/*real deal*/
+body{
+    background-color: #FCCD04;
+}
+
+.login_box{
+    border-radius: 25px;
+    position: fixed;
+    text-align: center;
+    line-height: 50px;
+    top: 50%;
+    left: 50%;
+    margin-top: -100px;
+    margin-left: -100px;
+    width: 300px;
+    height: 200px;
+    background-color: white;
+}
