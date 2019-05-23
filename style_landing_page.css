@@ -52,7 +52,7 @@ table {
 
 body{
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: white;
+    background-color:gainsboro;
 }
 
 .header{
@@ -85,10 +85,11 @@ body{
 }
 
 #main-doc{
+    background-color: white;
     display: block;
     margin: auto;
     max-width: 800px;
-    padding: 30px;
+    padding: 40px;
     padding-top: 120px;
     line-height: 20px;
 }
