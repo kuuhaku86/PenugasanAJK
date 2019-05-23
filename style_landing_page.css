@@ -108,3 +108,10 @@ h2{
     font-size: 20px;
     line-height: 40px;
 }
+
+.img-ajk{
+    display: block;
+    max-width:100%;
+    height:auto;
+    margin: auto;
+}
