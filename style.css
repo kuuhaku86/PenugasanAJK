@@ -71,7 +71,8 @@ body{
     background-color: white;
 }
 .title{
-    
+    font-size: 20px;
+    font-weight: 500;
 }
 .exception{
     font-size: 12px;
