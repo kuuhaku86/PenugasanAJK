@@ -20,7 +20,7 @@
                                         <label  for="username"><b>Username</b></label>
                                     </div>
                                     <div class="right-tab">
-                                        <input type="text" placeholder="Enter Username" name="username" required>
+                                        <input type="text" class="input-field" placeholder="Enter Username" name="username" required>
                                     </div>
                                 </p>
                             </tr>
@@ -30,14 +30,14 @@
                                         <label  for="password"><b>Password</b></label>
                                     </div>
                                     <div class="right-tab">
-                                        <input type="password" name="password" placeholder="Enter Password" required>
+                                        <input type="password" name="password" class="input-field"  placeholder="Enter Password" required>
                                     </div>
                                 </p>
                                 <p>
                                     <button type="submit">Register</button>
                                 </p>
                                 <p class="exception">
-                                    Already have an account? <a href="login.html">Click here</a>
+                                    Already have an account? <a href="register.php">Click here</a>
                                 </p>
                             </tr>
                     </table>

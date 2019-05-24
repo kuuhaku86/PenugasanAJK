@@ -59,8 +59,8 @@ body{
     color: white;
 }
 .login_box{
-    padding-right: 20px;
-    padding-left: 30px;
+    padding-right: 30px;
+    padding-left: 20px;
     display: block;
     border-radius: 25px;
     text-align: center;
@@ -85,4 +85,20 @@ body{
 .right-tab{
     width: 70%;
     float: right;
+}
+
+.button{
+    margin-top: 20px;
+    display: block;
+    width: 100%;
+    background-color: rgb(50, 50, 150);
+    border-radius: 25px;
+}
+
+.input-field{
+    width: 100%;
+    height: 20px;
+    padding-left: 10px;
+    border:1px solid rgb(255, 255, 255);
+    border-bottom-color: grey;
 }
