@@ -1,3 +1,39 @@
+<?php 
+
+require_once("config.php");
+
+if(isset($_POST['login'])){
+
+    $username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_STRING);
+    $password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_STRING);
+
+    $sql = "SELECT * FROM users WHERE username=:username OR email=:email";
+    $stmt = $db->prepare($sql);
+    
+    // bind parameter ke query
+    $params = array(
+        ":username" => $username,
+        ":email" => $username
+    );
+
+    $stmt->execute($params);
+
+    $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    // jika user terdaftar
+    if($user){
+        // verifikasi password
+        if(password_verify($password, $user["password"])){
+            // buat Session
+            session_start();
+            $_SESSION["user"] = $user;
+            // login sukses, alihkan ke halaman timeline
+            header("Location: timeline.php");
+        }
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,7 +47,7 @@
     <div class="container">
         <div class="big_title">Welcome to My Site</div>
         <div class="login_box">
-            <form id="form_login"action="action_page.php">
+            <form id="form_login"action="" method="POST">
                 <h2 class="title">Login</h2>
                 <table>
                         <tr>
@@ -20,7 +56,7 @@
                                         <label  for="username"><b>Username</b></label>
                                     </div>
                                     <div class="right-tab">
-                                        <input type="text" class="input-field" placeholder="Enter Username" name="username" required>
+                                        <input type="text" class="input-field" placeholder="Enter Username or Email" name="username" required>
                                     </div>
                                 </p>
                             </tr>
@@ -34,10 +70,10 @@
                                     </div>
                                 </p>
                                 <p>
-                                    <button type="submit">Register</button>
+                                    <input type="submit" name="login" value="Login" />
                                 </p>
                                 <p class="exception">
-                                    Already have an account? <a href="register.php">Click here</a>
+                                    Don't have any account? <a href="register.php">Click here</a>
                                 </p>
                             </tr>
                     </table>

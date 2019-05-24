@@ -44,7 +44,7 @@ if(isset($_POST['register'])){
 </head>
 <body>
     <div class="container">
-        <div class="big_title" style="margin-top:20px;">Welcome to My Site</div>
+        <div class="big_title" >Welcome to My Site</div>
         <div class="login_box" style="margin-top:50px; height:300px;">
             <form id="form_login" action="" method="POST">
                 <h2 class="title">Register</h2>
@@ -77,7 +77,7 @@ if(isset($_POST['register'])){
                             </div>
                         </p>
                         <p>
-                            <button type="submit">Register</button>
+                            <input type="submit" name="register" value="Register" />
                         </p>
                         <p class="exception">
                             Already have an account? <a href="login.php">Click here</a>
