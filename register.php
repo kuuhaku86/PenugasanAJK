@@ -5,7 +5,6 @@ require_once("config.php");
 if(isset($_POST['register'])){
 
     // filter data yang diinputkan
-    $name = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_STRING);
     $username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_STRING);
     // enkripsi password
     $password = password_hash($_POST["password"], PASSWORD_DEFAULT);
@@ -13,13 +12,12 @@ if(isset($_POST['register'])){
 
 
     // menyiapkan query
-    $sql = "INSERT INTO users (name, username, email, password) 
-            VALUES (:name, :username, :email, :password)";
+    $sql = "INSERT INTO users (username, email, password) 
+            VALUES (:username, :email, :password)";
     $stmt = $db->prepare($sql);
 
     // bind parameter ke query
     $params = array(
-        ":name" => $name,
         ":username" => $username,
         ":password" => $password,
         ":email" => $email
@@ -46,8 +44,8 @@ if(isset($_POST['register'])){
 </head>
 <body>
     <div class="container">
-        <div class="big_title">Welcome to My Site</div>
-        <div class="login_box">
+        <div class="big_title" style="margin-top:20px;">Welcome to My Site</div>
+        <div class="login_box" style="margin-top:50px; height:300px;">
             <form id="form_login" action="" method="POST">
                 <h2 class="title">Register</h2>
                 <table>
@@ -62,6 +60,14 @@ if(isset($_POST['register'])){
                         </p>
                     </tr>
                     <tr>
+                        <p>
+                            <div class="left-tab">
+                                <label  for="username"><b>E-mail</b></label>
+                            </div>
+                            <div class="right-tab">
+                                <input type="text" class="input-field" placeholder="Enter Username" name="username" required>
+                            </div>
+                        </p>
                         <p>
                             <div class="left-tab">
                                 <label  for="password"><b>Password</b></label>
