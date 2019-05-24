@@ -62,10 +62,10 @@ if(isset($_POST['register'])){
                     <tr>
                         <p>
                             <div class="left-tab">
-                                <label  for="username"><b>E-mail</b></label>
+                                <label  for="email"><b>E-mail</b></label>
                             </div>
                             <div class="right-tab">
-                                <input type="text" class="input-field" placeholder="Enter Username" name="username" required>
+                                <input type="text" class="input-field" placeholder="Enter Email" name="email" required>
                             </div>
                         </p>
                         <p>

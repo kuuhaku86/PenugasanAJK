@@ -20,7 +20,7 @@
             </div>
         </div>
         <main id="main-doc">
-            <h1 style="font-size:20px;">Hallo <?php echo  $_SESSION["user"]["name"] ?></h1>
+            <h1 style="font-size:20px;">Hallo <?php echo  $_SESSION["user"]["username"] ?></h1>
             <p ><a style="text-decoration:none;" href="logout.php">Logout</a></p><br><br>
 
             <section class="main-section">
