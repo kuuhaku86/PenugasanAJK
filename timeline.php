@@ -8,11 +8,12 @@
     <link rel="stylesheet" href="style_landing_page.css">
 </head>
 <body>
-    <?php 
+    <?php
+    include 'config.php';
 	session_start();
 	if($_SESSION['status']!="login"){
 		header("location:index.php?pesan=belum_login");
-	}
+    }
 	?>
     <div class="container">
         <div class="header">
@@ -25,7 +26,7 @@
         </div>
         <main id="main-doc">
             <h1 style="font-size:20px;">Hallo <?php echo  $_SESSION['username'] ?></h1>
-            <p><a style="text-decoration:none;" href="edit.php?id=<?php echo $data['id']; ?>">Edit </a><a style="text-decoration:none;" href="logout.php">Logout</a></p><br><br>
+            <p><a style="text-decoration:none;" href="edit.php">Edit</a> | <a style="text-decoration:none;" href="delete.php?id=$id">Delete</a> | <a style="text-decoration:none;" href="logout.php">Logout</a></p><br><br>
             <section class="main-section">
                 <header id="profile">Profile Laboratorium</header><br>
                 <p class="text">
