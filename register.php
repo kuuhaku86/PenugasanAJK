@@ -1,53 +1,40 @@
-<?php
-
-require_once("config.php");
-
-if(isset($_POST['register'])){
-
-    // filter data yang diinputkan
-    $username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_STRING);
-    // enkripsi password
-    $password = password_hash($_POST["password"], PASSWORD_DEFAULT);
-    $email = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
-
-
-    // menyiapkan query
-    $sql = "INSERT INTO users (username, email, password) 
-            VALUES (:username, :email, :password)";
-    $stmt = $db->prepare($sql);
-
-    // bind parameter ke query
-    $params = array(
-        ":username" => $username,
-        ":password" => $password,
-        ":email" => $email
-    );
-
-    // eksekusi query untuk menyimpan ke database
-    $saved = $stmt->execute($params);
-
-    // jika query simpan berhasil, maka user sudah terdaftar
-    // maka alihkan ke halaman login
-    if($saved) header("Location: login.php");
-}
-
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Register</title>
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
+<?php
+require('config.php');
+// If form submitted, insert values into the database.
+if (isset($_REQUEST['username'])){
+        // removes backslashes
+	$username = stripslashes($_REQUEST['username']);
+        //escapes special characters in a string
+	$username = mysqli_real_escape_string($config,$username); 
+	$email = stripslashes($_REQUEST['email']);
+	$email = mysqli_real_escape_string($config,$email);
+	$password = stripslashes($_REQUEST['password']);
+	$password = mysqli_real_escape_string($config,$password);
+    $query = "INSERT into `users` (username, password, email)
+VALUES ('$username', '$password', '$email')";
+        $result = mysqli_query($config,$query);
+        if($result){
+            echo "<div class='form'>
+<h3>You are registered successfully.</h3>
+<br/>Click here to <a href='login.php'>Login</a></div>";
+        }
+    }else{
+?>
     <div class="container">
         <div class="big_title" >Welcome to My Site</div>
-        <div class="login_box" style="margin-top:50px; height:300px;">
+        <div class="login_box" style=" height:300px;">
             <form id="form_login" action="" method="POST">
-                <h2 class="title">Register</h2>
+                <h2 class="title">Create Account</h2>
                 <table>
                     <tr>
                         <p>
@@ -77,7 +64,7 @@ if(isset($_POST['register'])){
                             </div>
                         </p>
                         <p>
-                            <input type="submit" name="register" value="Register" />
+                            <input type="submit" name="register" class="button" style="color:grey; height:30px;border-radius:10px; display:block; margin-top:50px; " value="Register" />
                         </p>
                         <p class="exception">
                             Already have an account? <a href="login.php">Click here</a>
@@ -87,5 +74,6 @@ if(isset($_POST['register'])){
             </form>
         </div>
     </div>
+    <?php } ?>
 </body>
 </html>

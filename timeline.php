@@ -1,15 +1,19 @@
-<?php require_once("auth.php"); ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Web Profile</title>
     <link rel="stylesheet" href="style_landing_page.css">
 </head>
 <body>
+    <?php 
+	session_start();
+	if($_SESSION['status']!="login"){
+		header("location:index.php?pesan=belum_login");
+	}
+	?>
     <div class="container">
         <div class="header">
             <img id="header-img" src="ASET-02.png" alt="logo-AJK">
@@ -20,9 +24,8 @@
             </div>
         </div>
         <main id="main-doc">
-            <h1 style="font-size:20px;">Hallo <?php echo  $_SESSION["user"]["username"] ?></h1>
-            <p ><a style="text-decoration:none;" href="logout.php">Logout</a></p><br><br>
-
+            <h1 style="font-size:20px;">Hallo <?php echo  $_SESSION['username'] ?></h1>
+            <p><a style="text-decoration:none;" href="edit.php?id=<?php echo $data['id']; ?>">Edit </a><a style="text-decoration:none;" href="logout.php">Logout</a></p><br><br>
             <section class="main-section">
                 <header id="profile">Profile Laboratorium</header><br>
                 <p class="text">

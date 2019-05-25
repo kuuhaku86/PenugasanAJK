@@ -49,14 +49,15 @@ table {
 /*real deal*/
 body{
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-image: url("Blur-2.png");
+    background-color: #dcedc8 ;
+    /* background-image: url("Blur-2.png"); */
 }
 .big_title{
     top: 20%;
     text-align: center;
     font-size: 50px;
     margin-top: 60px;
-    color: white;
+    color: #33691e  ;
 }
 .login_box{
     padding-right: 30px;
@@ -67,7 +68,7 @@ body{
     line-height: 50px;
     top: 50%;
     margin:auto;
-    margin-top: 50px;
+    margin-top: 85px;
     width: 350px;
     height: 250px;
     background-color: white;
@@ -75,6 +76,7 @@ body{
 .title{
     font-size: 20px;
     font-weight: 500;
+    color: #33691e;
 }
 .exception{
     font-size: 12px;
@@ -102,4 +104,5 @@ body{
     padding-left: 10px;
     border:1px solid rgb(255, 255, 255);
     border-bottom-color: grey;
+    border-radius:10px;
 }

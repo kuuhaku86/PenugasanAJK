@@ -1,53 +1,28 @@
-<?php 
-
-require_once("config.php");
-
-if(isset($_POST['login'])){
-
-    $username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_STRING);
-    $password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_STRING);
-
-    $sql = "SELECT * FROM users WHERE username=:username OR email=:email";
-    $stmt = $db->prepare($sql);
-    
-    // bind parameter ke query
-    $params = array(
-        ":username" => $username,
-        ":email" => $username
-    );
-
-    $stmt->execute($params);
-
-    $user = $stmt->fetch(PDO::FETCH_ASSOC);
-
-    // jika user terdaftar
-    if($user){
-        // verifikasi password
-        if(password_verify($password, $user["password"])){
-            // buat Session
-            session_start();
-            $_SESSION["user"] = $user;
-            // login sukses, alihkan ke halaman timeline
-            header("Location: timeline.php");
-        }
-    }
-}
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Login</title>
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
+    <?php 
+	if(isset($_GET['pesan'])){
+		if($_GET['pesan'] == "gagal"){
+			echo "Login gagal! username dan password salah!";
+		}else if($_GET['pesan'] == "logout"){
+			echo "Anda telah berhasil logout";
+		}else if($_GET['pesan'] == "belum_login"){
+			echo "Anda harus login untuk mengakses halaman admin";
+		}
+	}
+	?>
     <div class="container">
         <div class="big_title">Welcome to My Site</div>
         <div class="login_box">
-            <form id="form_login"action="" method="POST">
+            <form id="form_login"action="login_check.php" method="POST">
                 <h2 class="title">Login</h2>
                 <table>
                         <tr>
@@ -56,7 +31,7 @@ if(isset($_POST['login'])){
                                         <label  for="username"><b>Username</b></label>
                                     </div>
                                     <div class="right-tab">
-                                        <input type="text" class="input-field" placeholder="Enter Username or Email" name="username" required>
+                                        <input type="text" class="input-field" placeholder="Enter Username" name="username" required>
                                     </div>
                                 </p>
                             </tr>
@@ -70,7 +45,7 @@ if(isset($_POST['login'])){
                                     </div>
                                 </p>
                                 <p>
-                                    <input type="submit" name="login" value="Login" />
+                                    <input  type="submit" name="login" value="Login" class="button" style="color:grey; height:30px;border-radius:10px; display:block; margin-top:50px; " />
                                 </p>
                                 <p class="exception">
                                     Don't have any account? <a href="register.php">Click here</a>
