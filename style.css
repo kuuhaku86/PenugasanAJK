@@ -88,11 +88,12 @@ body{
 }
 
 .button{
-    margin-top: 20px;
+    margin-top: 30px;
     display: block;
     width: 100%;
-    background-color: rgb(50, 50, 150);
+    background-color: white;
     border-radius: 25px;
+    border: 1px solid rgb(155, 139, 129);
 }
 
 .input-field{
