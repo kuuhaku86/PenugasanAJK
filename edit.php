@@ -36,7 +36,7 @@
             ?>
             <form name="update" method="post" action="update.php">
             <table border="0">
-                <input type="hidden" name=”id” value="<?php echo $d['id']; ?>">
+                <input type="hidden" name="id" value="<?php echo $d['id']; ?>">
                 <tr> 
                     <td>Username</td>
                     <td class="insert"><input type="text" name="username" value="<?php echo $d['username']; ?>"></td>
@@ -46,13 +46,16 @@
                     <td class="insert"><input type="text" name="email" value="<?php echo $d['email']; ?>"></td>
                 </tr>
                 <tr>
-                    <td><input style="margin-top:10px;  display: block; width: 100px; height:30px; background-color: white; border-radius: 25px; border: 1px solid rgb(155, 139, 129); color:#33691e;" type="submit" name="update" value="Update"></td>
+                    <td><input style="font-family: 'Times New Roman', Times, serif; margin-top:10px;  display: block; width: 100px; height:30px; background-color: white; border-radius: 25px; border: 1px solid rgb(155, 139, 129); color:#33691e; font-weight:700; font-size:15px;" type="submit" name="update" value="Update"></td>
                 </tr>
             </table>
         </form>
         <?php 
 	}
 	?>
+        <p>
+            <a style="font-size:15px; font-weight:700; font-family: 'Times New Roman', Times, serif; text-decoration:none; margin-top:10px;  display: block; width: 150px; height:30px; background-color: white; border-radius: 25px; border: 1px solid rgb(155, 139, 129); color:#33691e; line-height:30px; text-align:center;" href='delete.php?username=<?php echo $username; ?>'>Delete Account</a>
+        </p>
         </main>
     </div>
 </body>
