@@ -1,11 +1,8 @@
-<?php 
-
-include 'connect.php';
+<?php
+include 'config.php';
 $id = $_POST['id'];
 $username = $_POST['username'];
 $email = $_POST['email'];
-
-mysql_query("UPDATE user SET username='$username', email='$email' WHERE id='$id'");
-
-header("location:timeline.php?pesan=update");
+$submit = mysqli_query($config, "update users set username='$username', email='$email' where id='$id'");
+header("location:timeline.php");
 ?>
