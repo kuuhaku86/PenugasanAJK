@@ -49,62 +49,61 @@ table {
 /*real deal*/
 body{
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #dcedc8 ;
-    /* background-image: url("Blur-2.png"); */
-}
-.big_title{
-    font-family: 'Times New Roman', Times, serif;
-    top: 20%;
-    text-align: center;
-    font-weight: 600;
-    font-size: 65px;
-    margin-top: 60px;
-    color: #33691e  ;
+    background: #76b852;
+    position: relative;
 }
 .login_box{
-    padding-right: 30px;
-    padding-left: 20px;
-    display: block;
-    border-radius: 25px;
+    padding:45px;
     text-align: center;
     line-height: 50px;
-    top: 50%;
-    margin:auto;
-    margin-top: 85px;
+    margin: 125px auto;
     width: 350px;
-    height: 250px;
     background-color: white;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+    /* border: 1px solid; */
 }
 .title{
     font-size: 20px;
     font-weight: 500;
-    color: #33691e;
+    color: grey;
 }
 .exception{
     font-size: 12px;
-}
-.left-tab{
-    float: left;
-}
-.right-tab{
-    width: 70%;
-    float: right;
+    color: grey;
+    text-decoration: none;
 }
 
 .button{
-    margin-top: 30px;
     display: block;
-    width: 100%;
-    background-color: white;
-    border-radius: 25px;
-    border: 1px solid rgb(155, 139, 129);
+    background: #4CAF50;
+    color: azure;
+    line-height: 100%;
+    /* padding: 15px 0; */
+    border: 0;
+    cursor: pointer;
 }
 
 .input-field{
-    width: 100%;
-    height: 20px;
-    padding-left: 10px;
-    border:1px solid rgb(255, 255, 255);
-    border-bottom-color: grey;
-    border-radius:10px;
+    display: block;
+    border:0;
+    background-color: #b3b3b3;
+    color: white;
 }
+
+.item{
+    margin-bottom: 10px;
+    width: 100%;
+    height: 45px;
+}
+
+.exception-link{
+    text-decoration: none;
+    color: #4CAF50;
+}
+
+.button:hover,.button:active,.button:focus {
+    background: #43A047;
+  }
+  .exception-link:hover{
+      color: #43A047;
+  }

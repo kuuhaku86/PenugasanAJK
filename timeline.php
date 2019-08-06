@@ -11,11 +11,10 @@
     <?php
     include 'config.php';
 	session_start();
+    // var_dump($_SESSION['cek']);
 	if($_SESSION['status']!="login"){
 		header("location:index.php?pesan=belum_login");
     }
-    $username=$_SESSION['username'];
-    $user_data = mysqli_query($config, "SELECT * FROM users WHERE username=$username");
 	?>
     <div class="container">
         <div class="header">
@@ -45,8 +44,8 @@
             </style>
         </div>
         <main id="main-doc">
-            <h1 style="font-size:20px;">Hallo <?php echo  $_SESSION['username'] ?></h1>
-            <p><a class="select_box" href='edit.php?username=<?php echo $_SESSION['username']; ?>'>Edit</a>  <a class="select_box" style="margin-left:10px;" href="logout.php">Logout</a></p><br><br>
+            <h1 style="font-size:20px;">Hallo <?=$_SESSION['userData']['username']; ?></h1>
+            <p><a class="select_box" href='edit.php?id=<?=$_SESSION['userData']['id']; ?>'>Edit</a>  <a class="select_box" style="margin-left:10px;" href="logout.php">Logout</a></p><br><br>
             <section class="main-section">
                 <header id="profile"><br><br>Profile Laboratorium</header><br>
                 <p class="text">

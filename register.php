@@ -17,57 +17,52 @@ if (isset($_REQUEST['username'])){
         //escapes special characters in a string
 	$username = mysqli_real_escape_string($config,$username); 
 	$email = stripslashes($_REQUEST['email']);
-	$email = mysqli_real_escape_string($config,$email);
-	$password = stripslashes($_REQUEST['password']);
-	$password = mysqli_real_escape_string($config,$password);
-    $query = "INSERT into `users` (username, password, email)
-VALUES ('$username', '$password', '$email')";
-        $result = mysqli_query($config,$query);
-        if($result){
-            echo "<div class='form'>
-<h3>You are registered successfully.</h3>
-<br/>Click here to <a href='login.php'>Login</a></div>";
-        }
+    $email = mysqli_real_escape_string($config,$email);
+	$password = $_REQUEST['password'];
+    $passwordConfirm = $_REQUEST['passwordConfirm'];
+    if($password==$passwordConfirm){
+        $password = password_hash($password, PASSWORD_BCRYPT);
+        $query = "INSERT into `users` (username, password, email) 
+            VALUES ('$username', '$password', '$email')";
+            $result = mysqli_query($config,$query);
+            if($result){
+                header("Location: login.php?pesan=regissuccess");
+            }
     }else{
-?>
+        header("Location: register.php?pesan=regissuccess");
+    }
+    }else{
+        if(isset($_GET['passwordmatch'])){
+            echo "<script>
+            alert('The password confirmation doesn\'t match');
+            </script>";
+        }
+    ?>
     <div class="container">
-        <div class="big_title" >Welcome to My Site</div>
-        <div class="login_box" style=" height:300px;">
-            <form id="form_login" action="" method="POST">
+        <div class="login_box" style=" height:300px; padding-top:10px; padding-bottom:90px;">
+            <form id="form_login" action="register.php" method="POST">
                 <h2 class="title">Create Account</h2>
                 <table>
                     <tr>
                         <p>
-                            <div class="left-tab">
-                                <label  for="username"><b>Username</b></label>
-                            </div>
-                            <div class="right-tab">
-                                <input type="text" class="input-field" placeholder="Enter Username" name="username" required>
-                            </div>
+                            <input type="text" class="input-field item" placeholder="Enter Username" name="username" required>
                         </p>
                     </tr>
                     <tr>
                         <p>
-                            <div class="left-tab">
-                                <label  for="email"><b>E-mail</b></label>
-                            </div>
-                            <div class="right-tab">
-                                <input type="text" class="input-field" placeholder="Enter Email" name="email" required>
-                            </div>
+                            <input type="text" class="input-field item" placeholder="Enter Email" name="email" required>
                         </p>
                         <p>
-                            <div class="left-tab">
-                                <label  for="password"><b>Password</b></label>
-                            </div>
-                            <div class="right-tab">
-                                <input type="password" class="input-field" name="password" placeholder="Enter Password" required>
-                            </div>
+                            <input type="password" class="input-field item" name="password" placeholder="Enter Password" required>
                         </p>
                         <p>
-                            <input type="submit" name="register" class="button" style="color:grey; height:30px;border-radius:10px; display:block; margin-top:50px; " value="Register" />
+                            <input type="password" class="input-field item" name="passwordConfirm" placeholder="Confirm Password" required>
+                        </p>
+                        <p>
+                            <input type="submit" name="register" class="button item" value="Register" />
                         </p>
                         <p class="exception">
-                            Already have an account? <a href="login.php">Click here</a>
+                            Already have an account? <a href="login.php" class="exception-link">Click here</a>
                         </p>
                     </tr>
                     </table>

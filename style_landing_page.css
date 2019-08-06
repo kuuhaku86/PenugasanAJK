@@ -115,3 +115,22 @@ h2{
     height:auto;
     margin: auto;
 }
+
+.button{
+    font-family: 'Times New Roman', Times, serif; 
+    margin-top:10px;  
+    display: block; 
+    width: 245px; 
+    height:30px; 
+    background: #4CAF50;
+    border: 0; 
+    color:azure; 
+    font-weight:700; 
+    font-size:15px;
+    text-decoration: none;
+    text-align: center;
+}
+
+.button:hover{
+    cursor: pointer;
+}

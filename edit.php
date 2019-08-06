@@ -17,7 +17,10 @@
 		}
 		.insert{
 			float:right;
-		}
+        }
+        /* .main-doc{
+            height:720;
+        } */
 	</style>
 </head>
 <body>
@@ -30,8 +33,8 @@
             <header id="edit-data">Edit Data</header><br>
             <?php
                 include 'config.php';
-                $username=$_GET['username']; 
-                $result = mysqli_query($config, "select * from users where username='$username'");
+                $id=$_GET['id']; 
+                $result = mysqli_query($config, "select * from users where id='$id'");
                 while($d = mysqli_fetch_array($result)){
             ?>
             <form name="update" method="post" action="update.php">
@@ -39,14 +42,18 @@
                 <input type="hidden" name="id" value="<?php echo $d['id']; ?>">
                 <tr> 
                     <td>Username</td>
-                    <td class="insert"><input type="text" name="username" value="<?php echo $d['username']; ?>"></td>
+                    <td class="insert"><input type="text" name="username" value="<?=$d['username']; ?>"></td>
                 </tr>
                 <tr> 
                     <td>Email</td>
-                    <td class="insert"><input type="text" name="email" value="<?php echo $d['email']; ?>"></td>
+                    <td class="insert"><input type="text" name="email" value="<?=$d['email']; ?>"></td>
+                </tr>
+                <tr> 
+                    <td>Password</td>
+                    <td class="insert"><input type="password" name="password"></td>
                 </tr>
                 <tr>
-                    <td><input style="font-family: 'Times New Roman', Times, serif; margin-top:10px;  display: block; width: 100px; height:30px; background-color: white; border-radius: 25px; border: 1px solid rgb(155, 139, 129); color:#33691e; font-weight:700; font-size:15px;" type="submit" name="update" value="Update"></td>
+                    <td><input type="submit" name="update" class="button" value="Update" style="background-color:yellow; color:black;" onclick="return confirm('Are you sure to update this account info?')"></td>
                 </tr>
             </table>
         </form>
@@ -54,7 +61,7 @@
 	}
 	?>
         <p>
-            <a style="font-size:15px; font-weight:700; font-family: 'Times New Roman', Times, serif; text-decoration:none; margin-top:10px;  display: block; width: 150px; height:30px; background-color: white; border-radius: 25px; border: 1px solid rgb(155, 139, 129); color:#33691e; line-height:30px; text-align:center;" href='delete.php?username=<?php echo $username; ?>'>Delete Account</a>
+            <a href='delete.php?id=<?=d['id']; ?>' class="button" style="background-color:red;" onclick="return confirm('Are you sure to delete this account?')">Delete Account</a>
         </p>
         </main>
     </div>
