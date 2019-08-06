@@ -6,15 +6,35 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Web Profile</title>
     <link rel="stylesheet" href="style_landing_page.css">
+    <style>
+        .select_box{
+            font-family: 'Times New Roman', Times, serif; 
+            margin-top:10px;  
+            display: block; 
+            width: 55px; 
+            height:30px; 
+            background-color: white; border-radius: 25px; 
+            border: 1px solid rgb(155, 139, 129); 
+            color:#33691e; 
+            font-weight:700; 
+            font-size:15px;
+            line-height:30px;
+            text-align:center;
+            float : left;
+            text-decoration:none;
+        }
+</style>
 </head>
 <body>
     <?php
     include 'config.php';
-	session_start();
-    // var_dump($_SESSION['cek']);
+    session_start();
 	if($_SESSION['status']!="login"){
-		header("location:index.php?pesan=belum_login");
+        header("location:index.php?pesan=belum_login");
     }
+    $id=$_SESSION['id'];
+    $data=mysqli_query($config,"SELECT * FROM users WHERE id='$id'");
+    $dataUser=mysqli_fetch_assoc($data);
 	?>
     <div class="container">
         <div class="header">
@@ -24,28 +44,10 @@
                 <a href="#matkul" class="nav-link">Mata Kuliah</a> 
                 <a href="#profile" class="nav-link">Profile Lab</a>
             </div>
-            <style>
-                .select_box{
-                    font-family: 'Times New Roman', Times, serif; 
-                    margin-top:10px;  
-                    display: block; 
-                    width: 55px; 
-                    height:30px; 
-                    background-color: white; border-radius: 25px; 
-                    border: 1px solid rgb(155, 139, 129); 
-                    color:#33691e; 
-                    font-weight:700; 
-                    font-size:15px;
-                    line-height:30px;
-                    text-align:center;
-                    float : left;
-                    text-decoration:none;
-                }
-            </style>
         </div>
         <main id="main-doc">
-            <h1 style="font-size:20px;">Hallo <?=$_SESSION['userData']['username']; ?></h1>
-            <p><a class="select_box" href='edit.php?id=<?=$_SESSION['userData']['id']; ?>'>Edit</a>  <a class="select_box" style="margin-left:10px;" href="logout.php">Logout</a></p><br><br>
+            <h1 style="font-size:20px;">Hallo <?=$dataUser['username']; ?></h1>
+            <p><a class="select_box" href='edit.php?id=<?=$dataUser['id']; ?>'>Edit</a>  <a class="select_box" style="margin-left:10px;" href="logout.php">Logout</a></p><br><br>
             <section class="main-section">
                 <header id="profile"><br><br>Profile Laboratorium</header><br>
                 <p class="text">

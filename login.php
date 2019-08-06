@@ -15,12 +15,12 @@
                 alert('Login gagal karena username atau password salah');
             </script>";
 		}else if($_GET['pesan'] == "logout"){
-			echo "<script>
-                alert('Anda berhasil logout');
+            echo "<script>
+            alert('Anda berhasil logout');
             </script>";
 		}else if($_GET['pesan'] == "regissuccess"){
             echo "<script>
-                alert('Register success');
+            alert('Register success');
             </script>";
         }
 	}
@@ -33,7 +33,7 @@
                         <tr>
                                 <p>
                                     <div>
-                                        <input type="text" class="input-field item" placeholder="Enter Username" name="username" required>
+                                        <input type="text" class="input-field item" placeholder="Enter Username or Email" name="username" required>
                                     </div>
                                 </p>
                             </tr>

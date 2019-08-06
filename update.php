@@ -1,29 +1,32 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-</head>
-<body>
-    <?php
-include 'config.php';
-$id = $_POST['id'];
-$username = $_POST['username'];
-$email = $_POST['email'];
-$submit = mysqli_query($config, "update users set username='$username', email='$email' where id='$id'");
-$data = mysqli_query($config,"select * from users where id='$id'");
-while($d=mysqli_fetch_array($data)){
-?>
-    <form id="dateForm" action="login_check.php" method="POST">
-    <input type="hidden" name="username" value="<?php echo $d['username']; ?>">
-    <input type="hidden" name="password" value="<?php echo $d['password']; ?>">
-    <script type="text/javascript">
-        document.getElementById('dateForm').submit();
-    </script>
-    </form>
-</body>
-    <?php
+<?php
+    include 'config.php';
+    if($_POST['action']=="Update"){
+        $id = $_POST['id'];
+        $username = $_POST['username'];
+        $email = $_POST['email'];
+        $password = $_POST['password'];
+        $data = mysqli_query($config,"SELECT * FROM users WHERE id='$id'");
+        $data = mysqli_fetch_assoc($data);
+        if(password_verify($password,$data['password'])){
+            $submit = mysqli_query($config, "UPDATE users SET username='$username', email='$email' WHERE id='$id'");
+            header("Location: timeline.php");
+            exit();
         }
-    ?>
-</html>
+        header("Location: edit.php?pesan=pwdnotmatch&id=".$id);
+        exit();
+        
+    }else if($_POST['action']=="Delete Account"){
+        $id = $_POST['id'];
+        $password = $_POST['password'];
+        $data = mysqli_query($config,"SELECT * FROM users WHERE id='$id'");
+        $data=mysqli_fetch_assoc($data);
+        if(password_verify($password,$data['password'])) {
+            mysqli_query($config,"DELETE FROM users WHERE id='$id'");
+            header("location:logout.php");
+            exit();
+        }
+        header("location: edit.php?pesan=pwdnotmatch&id=".$id);
+        exit();
+    }
+    header("Location: timeline.php");
+?>
