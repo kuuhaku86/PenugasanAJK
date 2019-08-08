@@ -134,3 +134,20 @@ h2{
 .button:hover{
     cursor: pointer;
 }
+
+.select_box{
+    font-family: 'Times New Roman', Times, serif; 
+    margin-top:10px;  
+    display: block; 
+    width: 55px; 
+    height:30px;
+    border: 0; 
+    border-radius: 25%;
+    color:white; 
+    font-weight:700; 
+    font-size:15px;
+    line-height:30px;
+    text-align:center;
+    float : left;
+    text-decoration:none;
+}

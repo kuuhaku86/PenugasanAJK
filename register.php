@@ -47,7 +47,7 @@ if (isset($_REQUEST['username'])){
                     </tr>
                     <tr>
                         <p>
-                            <input type="text" class="input-field item" placeholder="Enter Email" name="email" required>
+                            <input type="email" class="input-field item" placeholder="Enter Email" name="email" required>
                         </p>
                         <p>
                             <input type="password" class="input-field item" name="password" placeholder="Enter Password" required>

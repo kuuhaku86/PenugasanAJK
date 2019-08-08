@@ -9,7 +9,7 @@
         $data = mysqli_fetch_assoc($data);
         if(password_verify($password,$data['password'])){
             $submit = mysqli_query($config, "UPDATE users SET username='$username', email='$email' WHERE id='$id'");
-            header("Location: timeline.php");
+            header("Location: timeline.php?pesan=updatesuccess");
             exit();
         }
         header("Location: edit.php?pesan=pwdnotmatch&id=".$id);

@@ -25,6 +25,7 @@
 </head>
 <body>
     <?php
+        session_start();
         if(isset($_GET['pesan'])){
             if($_GET['pesan']=="pwdnotmatch"){
                 echo "<script>
@@ -42,7 +43,7 @@
             <header id="edit-data">Edit Data</header><br>
             <?php
                 include 'config.php';
-                $id=$_GET['id']; 
+                $id=$_SESSION['id']; 
                 $result = mysqli_query($config, "SELECT * FROM users WHERE id='$id'");
                 while($d = mysqli_fetch_array($result)){
             ?>
@@ -60,6 +61,11 @@
                 <tr> 
                     <td>Password</td>
                     <td class="insert"><input type="password" name="password" placeholder="Insert your current password"></td>
+                </tr>
+                <tr> 
+                    <td >
+                        <input type="button" value="Update Password" class="button" onclick="window.location.href='http://localhost/PenugasanAJK/password.php'">
+                    </td>
                 </tr>
                 <tr>
                     <td>
