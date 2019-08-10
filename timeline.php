@@ -33,6 +33,7 @@
         <div class="header">
             <img id="header-img" src="ASET-02.png" alt="logo-AJK">
             <div class="navbar">
+            <a href="#comment" class="nav-link">Comment</a> 
                 <a href="#photo" class="nav-link">Gallery</a>
                 <a href="#matkul" class="nav-link">Mata Kuliah</a> 
                 <a href="#profile" class="nav-link">Profile Lab</a>
@@ -101,6 +102,32 @@
                 <img src="foto-AJK/3.jpg" alt="foto-3" class="img-ajk">
                 <img src="foto-AJK/4.jpg" alt="foto-4" class="img-ajk">
             </section>
+            <header id="comment"><br><br>Comment</header><br>
+            <div class="comment">
+                <button class="add_button" onclick="window.location.href='http://localhost/PenugasanAJK/add_comment.php'">
+                    Add
+                </button>
+                <div class="comment_section">
+                    <?php 
+                        $comment = mysqli_query($config,"SELECT * FROM comment WHERE id_user='$id'");
+                        while($data=mysqli_fetch_array($comment)) :
+                    ?>
+                        <div class="the_comment">
+                            <div class="button_section">
+                                <a href="delete_comment.php?id=<?=$data['id']?>" onclick="return confirm('Are you sure to delete this account?')" >
+                                    <button class="edit_comment comment_button" style="margin-right:5px;">Delete</button>
+                                </a>
+                                <button class="delete_comment comment_button" onclick="window.location.href='http://localhost/PenugasanAJK/edit_comment.php?id='+<?=$data['id']?>" >Edit</button>
+                            </div>
+                            <div class="comment_val">
+                                <?=$data['comment']?>
+                            </div>
+                        </div>
+                    <?php 
+                        endwhile;
+                    ?>
+                </div>
+            </div>
         </main>
     </div>
 </body>
