@@ -26,10 +26,10 @@ if (isset($_REQUEST['username'])){
                 header("Location: login.php?pesan=regissuccess");
             }
     }else{
-        header("Location: register.php?pesan=regissuccess");
+        header("Location: register.php?pesan=passwordmatch");
     }
     }else{
-        if(isset($_GET['passwordmatch'])){
+        if(isset($_GET['pesan'])&&$_GET['pesan']=='passwordmatch'){
             echo "<script>
             alert('The password confirmation doesn\'t match');
             </script>";

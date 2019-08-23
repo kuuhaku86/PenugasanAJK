@@ -109,7 +109,7 @@
                 </button>
                 <div class="comment_section">
                     <?php 
-                        $comment = mysqli_query($config,"SELECT * FROM comment WHERE id_user='$id'");
+                        $comment = mysqli_query($config,"SELECT * FROM comment WHERE id_user='$id' ORDER BY id DESC");
                         while($data=mysqli_fetch_array($comment)) :
                     ?>
                         <div class="the_comment">
